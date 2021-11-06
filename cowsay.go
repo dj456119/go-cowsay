@@ -52,15 +52,7 @@ func BoxedStrings(lines []string) []string {
 	return boxedStrings
 }
 
-func Format(text string) string {
-	cowFooter := `
-        \   ^__^
-         \  (oo)\_______
-            (__)\       )\/\
-                ||----w |
-                ||     ||
-`
-
+func Format(template, text string) string {
 	// fmt.Printf("Text was: %s\n", text)
 	re := regexp.MustCompile("\\s+")
 	text = re.ReplaceAllString(text, " ")
@@ -102,5 +94,5 @@ func Format(text string) string {
 	// fmt.Printf("len(textParts): %d\n", len(textParts))
 	boxedLines := BoxedStrings(textParts)
 
-	return strings.Join(boxedLines, "\n") + cowFooter
+	return strings.Join(boxedLines, "\n") + template
 }
